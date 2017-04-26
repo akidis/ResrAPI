@@ -10,9 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var a = 90
+    var b = 100
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        //that's i'm test github service in my app
+        
+        plusNumb()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +27,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func plusNumb () -> Int {
+        
+        let c = a + b
+        
+        return c
+        
+    }
 
 }
 
