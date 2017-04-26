@@ -52,12 +52,16 @@ class ViewController: UIViewController {
                             
                             if let aud = valute["AUD"] as! NSDictionary? {
                                 
-                                if let valueAUD = aud["Value"] as! NSNumber?, let previousAUD = aud["Previous"] as! NSNumber? {
+                                if let valueAUD = aud["Value"] as! NSNumber? {
                                     
-                                    print(valueAUD, previousAUD) // print money value
+                                    print(valueAUD) // print money value
                                     
+                                    if let previousAUD = aud["Previous"] as! NSNumber? {
+                                        
+                                        print(previousAUD) // print previous money value
+                                        
+                                    }
                                 }
-                                
                             }
                         }
                         
