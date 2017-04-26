@@ -10,16 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var a = 90
-    var b = 100
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //that's i'm test github service in my app
+        cashCource()
         
-        plusNumb()
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,13 +25,57 @@ class ViewController: UIViewController {
     }
 
     
-    func plusNumb () -> Int {
+    func cashCource () {
         
-        let c = a + b
         
-        return c
+        let urlJson = URL(string: "http://www.cbr-xml-daily.ru/daily_json.js")
         
+        let task = URLSession.shared.dataTask(with: urlJson!) { (data, responce, error) in
+            
+            if error != nil {
+                
+                print("error!")
+                
+            } else {
+                
+                if let mydata = data {
+                    
+                    do {
+                        
+                        //Array of data____________________________________________
+                        
+                        let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        //_________________________________________________________
+        
+                        
+                        if let valute = myJson["Valute"] as AnyObject? {
+                            
+                            if let aud = valute["AUD"] as! NSDictionary? {
+                                
+                                if let valueAUD = aud["Value"] as! NSNumber?, let previousAUD = aud["Previous"] as! NSNumber? {
+                                    
+                                    print(valueAUD, previousAUD)
+                                    
+                                }
+                                
+                            }
+                        }
+                        
+                    } catch {
+                        
+                        //catch error
+                        
+                    }
+                }
+                
+            }
+            
+        }
+        
+        task.resume()
+    
     }
+    
 
 }
 
