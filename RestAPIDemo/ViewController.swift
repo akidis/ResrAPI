@@ -54,7 +54,7 @@ class ViewController: UIViewController {
                                 
                                 if let valueAUD = aud["Value"] as! NSNumber?, let previousAUD = aud["Previous"] as! NSNumber? {
                                     
-                                    print(valueAUD, previousAUD)
+                                    print(valueAUD, previousAUD) // print money value
                                     
                                 }
                                 
